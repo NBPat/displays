@@ -1,5 +1,5 @@
 //  from https://www.hackster.io/baqwas/mcufriend-2-4-tft-display-e3c815
-//
+//    I had to add the file icons.h by copying from the library example graphicstest_kbv.
 // All the mcufriend.com UNO shields have the same pinout.
 // i.e. control pins A0-A4.  Data D2-D9.  microSD D10-D13.
 // Touchscreens are normally A1, A2, D7, D6 but the order varies
