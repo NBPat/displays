@@ -1,14 +1,19 @@
-// UTFT_ViewFont from http://www.RinkyDinkElectronics.com/
-// demo of the included fonts  requires the UTFT library.
-// pins are specific to my board, my OpenSmart 9225
+// Demo of Graphics on OpenSmart ILI9225 2.2inch shield 176x220
+// Basic functions to print alphabet and to draw simple shapes
+// This program requires the UTFT library 2.78 modified by OpenSmart
+
 #include <UTFT.h>
-// Declare which fonts we will be using
+// fonts are located in the file DefaultFonts.c
 extern uint8_t SmallFont[];
 extern uint8_t BigFont[];
 extern uint8_t SevenSegNumFont[];
-///UTFT myGLCD(ILI9225, A2, A1, A3);
-// UTFT myGLCD(ILI9225,LCD_RS,LCD_WR,LCD_CS); works
+// DATA0-DATA7 pins on shield are OpenSmart not MCUFRIEND
+// #define LCD_CS A3 // Chip Select Analog 3
+// #define LCD_RS A2 // Command/Data Analog 2
+// #define LCD_WR A1 // LCD Write Analog 1
+// UTFT myGLCD(ILI9225,LCD_RS,LCD_WR,LCD_CS);	// or use the line below
 UTFT myGLCD(ILI9225, A2, A1, A3);
+
 void setup()
 {
   myGLCD.InitLCD();
@@ -16,7 +21,6 @@ void setup()
 }
 void loop()
 { while (1) {
-//  myGLCD.setRotation(r);  // no!  not in the oSmart library!  not utft?
     myGLCD.setColor(255, 0, 255);
     myGLCD.setBackColor(0, 0, 0);
     myGLCD.setFont(BigFont);
@@ -53,7 +57,7 @@ void loop()
 
     // smallfont
     myGLCD.setFont(SmallFont);
-        myGLCD.setBackColor(0, 0, 0);
+    myGLCD.setBackColor(0, 0, 0);
     // colour 1
     myGLCD.setColor(0, 255, 255); 
     myGLCD.print(" !\"#$%&'()*+,-./0123456789:;<=>?", CENTER, 40);
@@ -64,7 +68,7 @@ void loop()
 
     // primary
     myGLCD.clrScr();
-   myGLCD.setFont(BigFont);
+    myGLCD.setFont(BigFont);
     myGLCD.setBackColor(0, 0, 0);
     // colour 1
     myGLCD.setColor(0, 0, 255);   
