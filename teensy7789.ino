@@ -1,6 +1,7 @@
 /***************************************************
   Adafruit graphic test for st7789 provided by teensyDuino examples
   example followed uno numbering which matches teensy lc
+  https://www.pjrc.com/teensy/td_libs_ST7735.html
  ****************************************************/
 
 #define TFT_MISO  12
