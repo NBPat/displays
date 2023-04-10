@@ -1,6 +1,6 @@
 #define reps 3
 void setup() {}
-void loop() {
+void loop() { while(1) {
   // decimal version of PORTB = 1 then PORTB = 0
   PORTB = 1;       delay(500);        // led on
   PORTB = 0;         delay(500);      // led off
@@ -38,4 +38,4 @@ void loop() {
   // mathematical inverse of PORTB is put into PORTB  
   for (int j=0;j < reps;j++) {
   PORTB = !PORTB; delay(950);
-    }}
+    }}}
