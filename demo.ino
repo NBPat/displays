@@ -1,5 +1,5 @@
 #define reps 3
-void setup() {}
+void setup() {DDRB=0xFF;}
 void loop() { while(1) {
   // decimal version of PORTB = 1 then PORTB = 0
   PORTB = 1;       delay(500);        // led on
