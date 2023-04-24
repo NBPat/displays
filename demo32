@@ -1,0 +1,44 @@
+#define F_CPU 16000000
+#define reps 3
+#include <avr/io.h>
+#include <util/delay.h>
+int main() {	DDRA = 0xFF;
+	while(1){
+	// decimal version of PORTA = 1 then PORTA = 0
+	PORTA = 1;       _delay_ms(50);        // led on
+	PORTA = 0;         _delay_ms(50);      // led off
+	// decimal version of PORTA = 255 then PORTA = 0
+	PORTA = 255;       _delay_ms(50);
+	PORTA = 0;         _delay_ms(50);
+	// binary version of PORTA = 1 then PORTA = 0
+	PORTA = 0b00000001;    _delay_ms(50);  // led on
+	PORTA = 0b00000000;    _delay_ms(50);  // led off
+	// binary version of PORTA = 255 then PORTA = 0
+	PORTA = 0b11111111;    _delay_ms(50);
+	PORTA = 0b00000000;    _delay_ms(50);
+	// hexadecimal version of PORTA = 1 then PORTA = 0
+	PORTA = 0x01;      _delay_ms(50);      // led on
+	PORTA = 0x00;      _delay_ms(50);      // led off
+	// hexadecimal version of PORTA = 255 then PORTA = 0
+	PORTA = 0xFF;      _delay_ms(50);      // led on
+	PORTA = 0x00;      _delay_ms(50);      // led off
+	
+	// shifts single bit from PORTA.0 to PORTA.7
+	for (int j=0;j < reps;j++) {
+		for (int i=0; i < 8 ;i++) { PORTA = (1<<i); _delay_ms(40);}
+		for (int i=0; i < 8 ;i++) { PORTA = (128>>i); _delay_ms(40);}
+	}
+	// masking of bits with |= and &= operators
+	for (int j=0;j < reps;j++) {
+		PORTA |= 0b00000001;  _delay_ms(50);   // mask to force PORTA.0 = 1
+		PORTA &= 0b11111110;  _delay_ms(50);   // mask to force PORTA.0 = 0
+	}
+	// alternate pattern
+	for (int j=0;j < reps;j++) {
+		PORTA = 0x55;  _delay_ms(90);          // PORTA = 0b01010101
+		PORTA = 0xAA;   _delay_ms(90);         // PORTA = 0b10101010
+	}
+	// mathematical inverse of PORTA is put into PORTA
+	for (int j=0;j < reps;j++) {
+		PORTA = !PORTA; _delay_ms(50);
+	}}}
