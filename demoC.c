@@ -1,7 +1,7 @@
 #define reps 3
 #include <avr/io.h>
 #include <util/delay.h>
-int main() {while(1){
+int main() {while(1){ DDRB = 0xFF;  // really needed to add this
   // decimal version of PORTB = 1 then PORTB = 0
   PORTB = 1;       _delay_ms(5000);        // led on
   PORTB = 0;         _delay_ms(5000);      // led off
